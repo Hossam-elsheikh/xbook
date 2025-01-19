@@ -1,25 +1,29 @@
 # **XBook Project**
-## A web app that allows users to exchange their books for read, or exchange forever.
+## A cool web app where you can swap books with others, borrow to read or trade to keep forever!
+## Folder structure
+
+## Installation
 ### Tools & Technologies : 
 - **Main Tools :**
-    - Next js (main website).
+    - Next js (xbook).
     - React js (dashboard).
     - Node js & Express (API).
-    - MongoDB & mongoose (database)
+    - MongoDB & mongoose (database).
 - **Extra Packages :**
-    - main website :
+    - xbook :
         - x
     - api :
         - x
     - dashboard : 
         - x
 
-- **User can :**
+- **Key Features > User can :**
     - [ ] create an account.
     - [ ] login to his account.
     - [ ] reset password.
     - [ ] set 2FA authentication.
     - [ ] delete his account. 
+    - [ ] set prefered genres of books.
     - [ ] view different books offered to exchange/buy by other users.
     - [ ] filter books by genres. 
     - [ ] create different libraries. 
@@ -35,5 +39,5 @@
     - [ ] rate other users.
     - [ ] report other users.
     - [ ] love books offered by other users.
-    - [ ] add books offered by other users to favourites.  
-    - [ ] (FF) chat with other users whom he/she is making exchange with. 
+    - [ ] add books/libraries offered by other users to favourites.  
+    - [ ] (FF) chat with other users whome he/she is making exchange with. 

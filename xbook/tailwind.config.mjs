@@ -10,7 +10,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        main: "var(--main)",
+        sec:"var(--sec)",
+        hover:"var(--hover)"
       },
+      fontFamily:{
+        roboto: ["Roboto Flex", "sans-serif"],
+      }
     },
   },
   plugins: [],

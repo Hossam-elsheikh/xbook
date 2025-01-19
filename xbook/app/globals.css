@@ -4,18 +4,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --main: #624e88;
+  --sec: #8967b3;
+  --hover: #8967b3;
+  --text-sec: #333333;
+  --font-roboto-flex: "Roboto Flex", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1a1a1a;
     --foreground: #ededed;
+    --text-sec: #CCCCCC;
+    --main: #ededed;
+    --sec: #f3f3f3;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto-flex);
 }
