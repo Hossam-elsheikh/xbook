@@ -29,7 +29,11 @@
     - [ ] create different libraries. 
     - [ ] add books to libraries.
     - [ ] highlight books for sale, exchange for a period or exchange forever.
+    - [ ] post looking for / highlighting posts.
+    - [ ] like/unlike other users posts.
+    - [ ] comment/edit comment/delete comment other users posts.
     - [ ] submit exchange/buy proposals to other users.
+    - [ ] follow other users.
     - [ ] accept exchange/buy proposals from other users.
     - [ ] refuse exchange/buy proposals from other users.
     - [ ] encounter exchange proposals from another users with another    
@@ -40,4 +44,6 @@
     - [ ] report other users.
     - [ ] love books offered by other users.
     - [ ] add books/libraries offered by other users to favourites.  
+    - [ ] check/read notifications. 
+    - [ ] edit his profile info. 
     - [ ] (FF) chat with other users whome he/she is making exchange with. 

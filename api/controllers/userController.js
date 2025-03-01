@@ -38,7 +38,7 @@ const addNewUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "please provide all data needed" });
   }
 
-  // chech dublicates 
+  // check dublicates 
   const dublicate = await User.findOne({userName}).lean().exec()
   if ( dublicate){
     return res.status(400).json({message:'This user already exist!'})

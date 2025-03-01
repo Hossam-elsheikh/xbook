@@ -3,9 +3,6 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-// @desc get all users
-// @route GET /users
-// @access private
 
 const login = asyncHandler(async (req, res) => {
   const { userName, password } = req.body;

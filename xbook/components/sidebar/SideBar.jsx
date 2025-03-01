@@ -5,18 +5,22 @@ import { BookHeart } from "lucide-react";
 import { UserRound } from "lucide-react";
 import { LibraryBig } from "lucide-react";
 import { Flame } from "lucide-react";
-import { History } from "lucide-react";
+import { Settings2 } from 'lucide-react';
 import { DiamondMinus } from "lucide-react";
 import { MessagesSquare } from "lucide-react";
 import { CircleHelp } from "lucide-react";
-import { LogOut } from 'lucide-react';
-import { Flag } from 'lucide-react';
-
-const SideBar = () => {
+import { LogOut } from "lucide-react";
+import { Flag } from "lucide-react";
+import Logo from "@/public/colored.svg";
+import Image from "next/image";
+const SideBar = ({ className,showLogo=false }) => {
   return (
-    <div className="flex flex-col sticky top-24 h-[88dvh] justify-between pb-4   border-r border-slate-100">
+    <div
+      className={`flex flex-col sticky top-24 h-[88dvh] justify-between pb-4   border-r border-slate-100 ${className}`}
+    >
       <div className="flex flex-col gap-3">
         <ul className="flex flex-col">
+         {showLogo && <Image src={Logo} className="m-8 w-20 md:w-28" alt="XBook" />}
           <SideBarLink
             href="/explore"
             title="Explore"
@@ -46,9 +50,9 @@ const SideBar = () => {
         <hr className=" mx-4" />
         <ul className="flex flex-col">
           <SideBarLink
-            href="/history"
-            title="History"
-            Icon={<History size={20} />}
+            href="/settings"
+            title="Settings"
+            Icon={<Settings2 size={20} />}
           />
           <SideBarLink
             href="/rules"
@@ -58,7 +62,7 @@ const SideBar = () => {
           <SideBarLink
             href="/community"
             title="Community"
-            Icon={<MessagesSquare  />}
+            Icon={<MessagesSquare />}
           />
           <SideBarLink
             href="/report"
@@ -69,7 +73,11 @@ const SideBar = () => {
       </div>
       <ul className="flex flex-col">
         <SideBarLink href="/faq" title="FAQ" Icon={<CircleHelp size={20} />} />
-        <SideBarLink href="/logout" title="Logout" Icon={<LogOut size={20}/>} />
+        <SideBarLink
+          href="/logout"
+          title="Logout"
+          Icon={<LogOut size={20} />}
+        />
       </ul>
     </div>
   );

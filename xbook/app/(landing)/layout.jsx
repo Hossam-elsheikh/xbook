@@ -2,7 +2,7 @@ import React from 'react'
 
 const layout = ({children}) => {
   return (
-    <div>
+    <div className='scroll-smooth'>
         {children}
     </div>
   )

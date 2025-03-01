@@ -1,12 +1,10 @@
-import Image from "next/image";
 import React from "react";
-import ExchangeFlame from "../objects/Flame";
-import { Yellowtail } from "next/font/google";
 import BookPost from "../books/BookPost";
 import LikeIcon from "../objects/Like";
 import ActionBtn from "../objects/ActionBtn";
 import CommentIcon from "../objects/Comment";
 import ExchangeIcon from "../objects/Exchange";
+import UserShort from "../objects/UserShort";
 
 const Post = () => {
   const postDetails = {
@@ -26,34 +24,13 @@ const Post = () => {
   };
   return (
     <div className="flex  flex-col w-full bg-white rounded-md border">
-      <div className="p-5 flex gap-5 flex-col">
-        <div className="flex gap-3">
-          <div className="flex relative rounded-full w-12 h-12">
-            <Image
-              objectFit="cover"
-              className="rounded-full"
-              src={postDetails.posterAvatar}
-              fill
-            />
-          </div>
-          <div>
-            <h1 className="font-semibold">{postDetails.posterName}</h1>
-            <p className="flex text-sm font-base items-center gap-1">
-              {postDetails.exchangesCount}
-              <ExchangeFlame
-                size={14}
-                fill={"var(--main)"}
-                color={"var(--main)"}
-              />
-              {postDetails.rate} / 5
-            </p>
-          </div>
-        </div>
+      <div className="p-5 flex  flex-col">
+        <UserShort avatar ={postDetails.posterAvatar} name={postDetails.posterName} exchangesCount={postDetails.exchangesCount} rate={postDetails.rate}/>
         <div className="flex flex-col p-3 gap-2 rounded-sm">
           <p>I'm looking for Harry Potter series ...</p>
           <BookPost {...postDetails.bookDetails} />
         </div>
-        <div className="text-xs font-light flex gap-2">
+        <div className="text-xs px-3 font-light flex gap-2">
           <p>{postDetails.likesCount} Likes</p>
           <p>{postDetails.commentsCount} Comments</p>
         </div>
