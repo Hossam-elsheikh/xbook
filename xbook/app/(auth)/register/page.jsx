@@ -13,18 +13,9 @@ import Logo from "@/public/colored.svg";
 import Link from "next/link";
 import Select from "react-select";
 import { Country, City } from "country-state-city";
-const Input = ({ type, name, placeholder, id, className, required }) => {
-  return (
-    <input
-      id={id}
-      type={type}
-      name={name}
-      required={required}
-      placeholder={placeholder}
-      className={`px-3 py-2 border-b w-full outline-none text-md font-semibold ${className}`}
-    />
-  );
-};
+import Input from "@/components/forms/Input";
+// import { accounts } from "@/lib/data";
+
 
 const customStyles = {
   control: (provided) => ({
