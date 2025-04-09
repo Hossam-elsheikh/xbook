@@ -1,44 +1,44 @@
-const User = require("../models/User");
+const {User} = require("../models/User");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
 const login = asyncHandler(async (req, res) => {
-  const { userName, password } = req.body;
-  if (!userName || !password) {
-    return res.status(400).json({ message: "All fields are required!" });
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "please provide the email and the password!" });
   }
-  const foundUser = await User.findOne({ userName }).exec();
-  if (!foundUser || !foundUser.active) {
-    return res.status(401).json({ message: "Unauthorized" });
+  const foundUser = await User.findOne({ email }).exec();
+  if (!foundUser ) {
+    return res.status(401).json({ message: "Invalid email or password!" });
   }
   const match = await bcrypt.compare(password, foundUser.password);
-  if (!match) return res.status(401).json({ message: "Unauthorized" });
+  if (!match) return res.status(401).json({ message: "Invalid email or password!" });
   const accessToken = jwt.sign(
     {
       UserInfo: {
         userName: foundUser.userName,
-        roles: foundUser.roles,
+        role: foundUser.role,
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "10s" }
+    { expiresIn: "1h" }
   );
   const refreshToken = jwt.sign(
     { userName: foundUser.userName },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "1d" }
+    { expiresIn: "15d" }
   );
   // create secure cookie with refresh token
   res.cookie("jwt", refreshToken, {
     httpOnly: true, //accessible only by web server
     secure: false, //https
     sameSite: "none", // cross-site cookie
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7days =  set to match refresh token
+    maxAge: 15 * 24 * 60 * 60 * 1000, // 15days =  set to match refresh token
   });
-  // send accessTpken containing username and roles
-  res.json({ accessToken });
+  // send accessToken containing username and role
+  res.json({accessToken});
 });
 
 const refresh = async (req, res) => {
@@ -64,7 +64,7 @@ const refresh = async (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "10s" }
+        { expiresIn: "1h" }
       );
       res.json({ accessToken });
     })

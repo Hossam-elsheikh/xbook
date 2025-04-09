@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
-
+// books are added from google books api to the db upon user search for book to add to his library
 const bookSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
     title: {
       type: String,
       required: true,
@@ -14,9 +9,32 @@ const bookSchema = mongoose.Schema(
     description: {
       type: String
     },
-    available:{
-        type:Boolean, 
-        default:true
+    authors: {
+      type: [String],
+    },
+    publishedDate: {
+      type: String
+    },
+    pageCount: {
+      type: Number
+    },
+    categories: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Tags",
+        }
+      ],
+    },
+    averageRating: {
+      type: Number
+    },
+    ratingsCount: {
+      type: Number
+    },
+    cover:{
+        type:String,
+
     }
   },
   {
@@ -24,4 +42,4 @@ const bookSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Books", bookSchema);

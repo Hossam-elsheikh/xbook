@@ -1,3 +1,5 @@
+import { Request, Response } from "express";
+
 // requiering dotenv like that makes it global
 require("dotenv").config();
 const express = require("express");
@@ -25,10 +27,11 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
 
-app.use("/users",require('./routes/userRoutes.js'))
-app.use("/auth",require('./routes/authRoutes.js'))
+app.use("/users", require("./routes/userRoutes.js"));
+app.use("/auth", require("./routes/authRoutes.js"));
+app.use("/posts", require("./routes/postRoutes.js"));
 
-app.all("*", (req, res) => {
+app.all("*", (req: Request, res: Response) => {
   res.status(404);
   if (req.accepts("html")) {
     res.sendFile(path.join(__dirname, "views", "404.html"));
@@ -41,17 +44,16 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler);
 
-
 mongoose.connection.once("open", () => {
   console.log("connected to mongoDB");
   app.listen(PORT, () => console.log("server running ..."));
 });
 
-mongoose.connection.on("error", (err) => {
-  console.log(err);
+mongoose.connection.on("error", (error: any) => {
+  console.log("error connecting to mongoDB");
+  console.log(error);
   logEvent(
-    `${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,
+    `${error.no}: ${error.code}\t${error.syscall}\t${error.hostname}`,
     "mongoErrLog.log"
   );
 });
-
